@@ -9,14 +9,26 @@ import java.lang.instrument.ClassFileTransformer;
 import java.security.ProtectionDomain;
 
 public class MyAgent implements ClassFileTransformer {
-    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
-                            ProtectionDomain protectionDomain, byte[] classfileBuffer) {
-        if (className.equals("simple.javaagent.MyClass")) {
+    public byte[] transform(
+        ClassLoader loader,
+        String className,
+        Class<?> classBeingRedefined,
+        ProtectionDomain protectionDomain,
+        byte[] classfileBuffer
+    ) {
+        if (className.equals("jakarta/servlet/http/HttpServletRequest")) {
             ClassReader classReader = new ClassReader(classfileBuffer);
             ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
             ClassVisitor classVisitor = new ClassVisitor(Opcodes.ASM9, classWriter) {
                 @Override
-                public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+                public void visit(
+                    int version,
+                    int access,
+                    String name,
+                    String signature,
+                    String superName,
+                    String[] interfaces
+                ) {
                     // Add MyInterface to the list of interfaces
                     String[] newInterfaces = new String[interfaces.length + 1];
                     System.arraycopy(interfaces, 0, newInterfaces, 0, interfaces.length);

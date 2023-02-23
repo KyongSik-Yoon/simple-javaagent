@@ -8,5 +8,6 @@ public class AgentLoader {
         Instrumentation inst
     ) {
         System.out.println("simple javaagent is running!");
+        inst.addTransformer(new MyAgent());
     }
 }
