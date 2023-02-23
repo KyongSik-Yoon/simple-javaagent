@@ -9,8 +9,4 @@ public class AgentLoader {
     ) {
         System.out.println("simple javaagent is running!");
     }
-
-    public static void main(String[] args) {
-        System.out.println("I'm a simple javaagent!");
-    }
 }
