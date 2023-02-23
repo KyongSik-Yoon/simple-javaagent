@@ -2,7 +2,7 @@ package simple.javaagent;
 
 import java.lang.instrument.Instrumentation;
 
-public class Main {
+public class AgentLoader {
     public static void premain(
         String agentArgs,
         Instrumentation inst
