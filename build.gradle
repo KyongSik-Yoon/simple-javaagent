@@ -20,6 +20,7 @@ dependencies {
 jar {
     manifest {
         attributes 'Premain-Class': 'simple.javaagent.AgentLoader'
+        attributes 'Main-Class': 'simple.app.Main'
     }
 }
 
@@ -27,6 +28,7 @@ shadowJar {
     mergeServiceFiles()
     manifest {
         attributes 'Premain-Class': 'simple.javaagent.AgentLoader'
+        attributes 'Main-Class': 'simple.app.main'
     }
     dependencies {
         include(dependency('org.ow2.asm:asm'))
